@@ -44,7 +44,7 @@ internal class Program
             //注入mysql，生产中应该放置在应用层
             var mysqlConfig = hostContext.Configuration.GetSection("Mysql").Get<MysqlOptions>();
             var serverVersion = new MariaDbServerVersion(new Version(mysqlConfig.Version));
-            services.AddDbContextFactory<LibraryDbContext>(options =>
+            services.AddDbContext<LibraryDbContext>(options =>
             {
                 options.UseMySql(mysqlConfig.ConnectionString, serverVersion, optionsBuilder =>
                 {
